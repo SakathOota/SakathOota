@@ -1,22 +1,22 @@
 /**
  * 
  */
-package com.sakathOota.resource.impl;
+package com.whiteSpace.resource.impl;
 
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
 
+import com.whiteSpace.resource.iface.FBRealTimeNotificationResource;
 import org.apache.log4j.Logger;
-import org.springframework.http.HttpStatus;
-import com.sakathOota.resource.iface.FBRealTimeNotificationDAO;
+
+import java.lang.String;
 
 /**
  * @author Shivakumar N
  *
  * @since Jan 9, 2013 10:11:33 PM
  */
-public class FBRealTimeNotificationDAOImpl implements FBRealTimeNotificationDAO{
-	private static final Logger logger = Logger.getLogger(FBRealTimeNotificationDAOImpl.class);
+public class FBRealTimeNotificationResourceImpl implements FBRealTimeNotificationResource {
+	private static final Logger logger = Logger.getLogger(FBRealTimeNotificationResourceImpl.class);
 	
 	public Response postCallBackUrl(String data) {
 		logger.info(data);

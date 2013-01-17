@@ -1,4 +1,6 @@
-package com.sakathOota.resource.iface;
+package com.whiteSpace.resource.iface;
+
+import com.whiteSpace.domain.common.types.User;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,16 +12,17 @@ import javax.ws.rs.core.Response;
  * Created with IntelliJ IDEA.
  * User: sn1
  * Date: 1/15/13
- * Time: 8:47 AM
+ * Time: 9:01 AM
  * To change this template use File | Settings | File Templates.
  */
-@Path("location")
-public interface LocationDAO {
+@Path("users")
+public interface UserResource {
 
-    @Path("/{id}")
     @GET
-    public Response getLocation(@PathParam("id") String id);
+    @Path("/{id}")
+    public Response getUser(@PathParam("id") String id);
 
     @POST
-    public Response saveLocation();
+    public Response createUser(User user);
+
 }

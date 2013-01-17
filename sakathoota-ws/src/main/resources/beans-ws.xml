@@ -12,7 +12,11 @@
 						   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 	<context:annotation-config/>
-	
-	<beans:bean class="com.sakathOota.resource.impl.FBRealTimeNotificationDAOImpl"/>
-	
-	</beans>
+
+    <import resource="classpath*:beans-da.xml" />
+
+	<bean class="com.whiteSpace.resource.impl.FBRealTimeNotificationResourceImpl"/>
+	<bean class="com.whiteSpace.resource.impl.UserResourceImpl" />
+    <bean class="com.whiteSpace.resource.impl.LocationResourceImpl" />
+
+</beans>

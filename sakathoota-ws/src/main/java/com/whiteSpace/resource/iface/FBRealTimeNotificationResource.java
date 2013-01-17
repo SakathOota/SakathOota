@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.sakathOota.resource.iface;
+package com.whiteSpace.resource.iface;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 
 @Path("/fb")
-public interface FBRealTimeNotificationDAO {
+public interface FBRealTimeNotificationResource {
 
 	@GET
 	public Response getCallBackUrl(@QueryParam("hub.verify_token") String verifyToken,
