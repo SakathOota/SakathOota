@@ -20,7 +20,7 @@ public class UserTest extends TestBase {
 
     private User getUser(){
         User user = new User();
-        user.setEmail("something@nothing.com");
+        user.setEmail("something"+ System.currentTimeMillis()+"@nothing.com");
         return user;
     }
 }
