@@ -9,8 +9,10 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.whiteSpace.resource.json.types.Notification;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -28,6 +30,7 @@ public interface FBRealTimeNotificationResource {
 			@QueryParam("hub.mode") String mode);
 	
 	@POST
+    @Consumes(MediaType.APPLICATION_JSON)
 	@Path("/")
-	public Response postCallBackUrl(String data);
+	public Response postCallBackUrl(Notification notification);
 }

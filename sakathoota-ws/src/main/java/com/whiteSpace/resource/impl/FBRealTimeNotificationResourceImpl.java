@@ -6,7 +6,10 @@ package com.whiteSpace.resource.impl;
 import javax.ws.rs.core.Response;
 
 import com.whiteSpace.resource.iface.FBRealTimeNotificationResource;
+import com.whiteSpace.resource.iface.UserResource;
+import com.whiteSpace.resource.json.types.Notification;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.String;
 
@@ -17,9 +20,12 @@ import java.lang.String;
  */
 public class FBRealTimeNotificationResourceImpl implements FBRealTimeNotificationResource {
 	private static final Logger logger = Logger.getLogger(FBRealTimeNotificationResourceImpl.class);
-	
-	public Response postCallBackUrl(String data) {
-		logger.info(data);
+
+    @Autowired
+    private UserResource userResource;
+
+	public Response postCallBackUrl(Notification notification) {
+
 		return null;
 	}
 

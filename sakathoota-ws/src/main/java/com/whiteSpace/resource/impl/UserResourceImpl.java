@@ -20,7 +20,7 @@ public class UserResourceImpl implements UserResource {
     private UserDataDAO userDataDAO;
 
     @Override
-    public Response getUser(String id) {
+    public Response getUser(String id, String idType) {
 
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }

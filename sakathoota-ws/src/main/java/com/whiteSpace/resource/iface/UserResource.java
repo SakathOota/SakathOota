@@ -2,10 +2,7 @@ package com.whiteSpace.resource.iface;
 
 import com.whiteSpace.domain.common.types.User;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
 /**
@@ -20,9 +17,12 @@ public interface UserResource {
 
     @GET
     @Path("/{id}")
-    public Response getUser(@PathParam("id") String id);
+    public Response getUser(@PathParam("id") String id, @QueryParam("id_type") String idType);
 
     @POST
     public Response createUser(User user);
+
+
+
 
 }

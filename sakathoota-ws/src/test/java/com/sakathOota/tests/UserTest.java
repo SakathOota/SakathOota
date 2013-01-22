@@ -1,6 +1,7 @@
 package com.sakathOota.tests;
 
 import com.sakathOota.tests.commons.TestBase;
+import com.sakathOota.tests.commons.TestObjectsMother;
 import com.whiteSpace.domain.common.types.User;
 import org.testng.annotations.Test;
 
@@ -15,12 +16,6 @@ public class UserTest extends TestBase {
 
     @Test
     public void createUserTest(){
-         resource.path("users").entity(getUser()).post();
-    }
-
-    private User getUser(){
-        User user = new User();
-        user.setEmail("something"+ System.currentTimeMillis()+"@nothing.com");
-        return user;
+         resource.path("users").entity(TestObjectsMother.getNewUserTestObject()).post();
     }
 }

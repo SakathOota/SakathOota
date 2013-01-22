@@ -7,6 +7,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -20,20 +21,26 @@ import java.sql.SQLException;
 public class UserDataDAOImpl extends BaseDAOImpl implements UserDataDAO {
     @Override
     public User createUser(final User user) {
-        final String sql = "insert into users (email) values(?)";
+        final String sql = "insert into users (email, fb_id, name, password, dob, gender, food_pref) values(?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatementCreator preparedStatementCreator = new PreparedStatementCreator() {
             @Override
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
                 PreparedStatement preparedStatement = con.prepareStatement(sql, new String[]{"user_id"});
-
-                preparedStatement.setString(1, user.getEmail());
+                int i = 1;
+                preparedStatement.setString(i++, user.getEmail());
+                preparedStatement.setLong(i++ , user.getFacebookId());
+                preparedStatement.setString(i++, user.getName());
+                preparedStatement.setString(i++, user.getPassword());
+                preparedStatement.setDate(i++, new Date(user.getDateOfBirth().getTime()));
+                preparedStatement.setInt(i++, user.getGender().getValue());
+                preparedStatement.setInt(i++, user.getFoodPref().getValue());
                 return preparedStatement;  //To change body of implemented methods use File | Settings | File Templates.
             }
         };
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(preparedStatementCreator, keyHolder);
-        user.setId(keyHolder.getKey().toString());
+        user.setId(keyHolder.getKey().intValue());
         return user;
     }
 

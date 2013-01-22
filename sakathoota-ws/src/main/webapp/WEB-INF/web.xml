@@ -18,6 +18,10 @@
 		<servlet-name>Jersey Spring Web Application</servlet-name>
 		<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
 		<init-param>
+        	<param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
+        	<param-value>/images/.*</param-value>
+    	</init-param>
+		<init-param>
 			<param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
 			<param-value>com.sun.jersey.api.container.filter.LoggingFilter</param-value>
 		</init-param>
@@ -25,9 +29,30 @@
 			<param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
 			<param-value>com.sun.jersey.api.container.filter.LoggingFilter</param-value>
 		</init-param>
+		<init-param>
+			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.JSPTemplatesBasePath</param-name>
+			<param-value>/WEB-INF/jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>com.sun.jersey.config.feature.Redirect</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>com.sun.jersey.config.feature.ImplicitViewables</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
+		<servlet-name>jsp</servlet-name>
+		<url-pattern>/WEB-INF/jsp/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>Jersey Spring Web Application</servlet-name>
-		<url-pattern>/v1/*</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 </web-app>

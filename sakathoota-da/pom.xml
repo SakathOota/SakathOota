@@ -14,7 +14,7 @@
         <dependency>
             <artifactId>sakathoota-do</artifactId>
             <groupId>com.whiteSpace</groupId>
-            <version>${project.parent.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -32,5 +32,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
         </dependency>
+
     </dependencies>
 </project>
