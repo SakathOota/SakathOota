@@ -23,6 +23,13 @@ public class FBRealTimeNotificationResourceImpl implements FBRealTimeNotificatio
 
     @Autowired
     private UserResource userResource;
+    
+    private FBDataAccess fbDataAccess;
+    
+	public void setFbDataAccess(FBDataAccess fbDataAccess) {
+		this.fbDataAccess = fbDataAccess;
+	}
+
 
 	public Response postCallBackUrl(Notification notification) {
 

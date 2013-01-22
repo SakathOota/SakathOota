@@ -9,14 +9,14 @@ import java.net.URI;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import org.springframework.social.connect.Connection;
-import org.springframework.social.facebook.api.Facebook;
-import org.springframework.social.facebook.connect.FacebookConnectionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.connect.ConnectionData;
 import org.springframework.social.oauth2.AccessGrant;
 import org.springframework.social.oauth2.GrantType;
 import org.springframework.social.oauth2.OAuth2Operations;
 import org.springframework.social.oauth2.OAuth2Parameters;
 
+import com.whiteSpace.da.iface.UserDataDAO;
 import com.whiteSpace.resource.iface.FBCredentialsController;
 
 /**
@@ -26,14 +26,18 @@ import com.whiteSpace.resource.iface.FBCredentialsController;
  */
 public class FBCredentailsControllerImpl implements FBCredentialsController{
 	
-	private FacebookConnectionFactory connectionFactory;
+	private FBDataAccess fbDataAccess;
+	
+	@Autowired
+    private UserDataDAO userDataDAO;
+
 	private OAuth2Operations oauthOperations;
 	private OAuth2Parameters params;
 	private String basePath;
 	
-	public FBCredentailsControllerImpl(FacebookConnectionFactory connectionFactory, String basePath){
-		this.connectionFactory = connectionFactory;
-		oauthOperations = connectionFactory.getOAuthOperations();
+	public FBCredentailsControllerImpl(FBDataAccess fbDataAccess, String basePath){
+		this.fbDataAccess = fbDataAccess;
+		oauthOperations = fbDataAccess.getConnectionFactory().getOAuthOperations();
 		params = new OAuth2Parameters();
 		this.basePath = basePath;
 	}
@@ -52,7 +56,7 @@ public class FBCredentailsControllerImpl implements FBCredentialsController{
 	}
 	
 	@Override
-	public Response redirectCallbackl(String authorizationCode, UriInfo uriInfo) {
+	public Response redirectCallback(String authorizationCode, UriInfo uriInfo) {
 		AccessGrant accessGrant = null;
 		try {
 			accessGrant = oauthOperations.exchangeForAccess(authorizationCode, URI.create(uriInfo.getBaseUri().toURL().toString() + basePath).toURL().toString(), null);
@@ -61,8 +65,14 @@ public class FBCredentailsControllerImpl implements FBCredentialsController{
 		}
 		System.err.println("Acccccesss (**************" + accessGrant.getAccessToken());
 		
-		Connection<Facebook> connection = connectionFactory.createConnection(accessGrant);
+		//Check whether user exists or not?
 		
+		
+		
+		//Connection<Facebook> connection = connectionFactory.createConnection(accessGrant);
+		//connectionFactory.createConnection(null);
+		ConnectionData connectionData;
+		//Facebook facebook = connection.getApi();
 		
 		return null;
 	}

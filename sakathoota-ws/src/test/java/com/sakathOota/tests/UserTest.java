@@ -2,6 +2,7 @@ package com.sakathOota.tests;
 
 import com.sakathOota.tests.commons.TestBase;
 import com.sakathOota.tests.commons.TestObjectsMother;
+import com.sun.jersey.api.client.ClientResponse;
 import com.whiteSpace.domain.common.types.User;
 import org.testng.annotations.Test;
 
@@ -17,5 +18,10 @@ public class UserTest extends TestBase {
     @Test
     public void createUserTest(){
          resource.path("users").entity(TestObjectsMother.getNewUserTestObject()).post();
+    }
+    
+    @Test
+    public void getUserByFBIdTest(){
+    	resource.path("users/1234").queryParam("idType", "FACEBOOK_ID").get(ClientResponse.class);
     }
 }

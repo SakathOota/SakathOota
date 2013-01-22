@@ -12,18 +12,26 @@
 						   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 	<context:annotation-config/>
+	
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	
     <import resource="classpath*:beans-da.xml" />
     <import resource="classpath*:beans-ws-fb.xml" />
 
-	<bean class="com.whiteSpace.resource.impl.FBRealTimeNotificationResourceImpl"/>
+	<bean class="com.whiteSpace.resource.impl.FBRealTimeNotificationResourceImpl">
+		<property name="fbDataAccess" ref="fbDataAccess" />
+	</bean>
+	
 	<bean class="com.whiteSpace.resource.impl.UserResourceImpl" />
     <bean class="com.whiteSpace.resource.impl.LocationResourceImpl" />
     <bean class="com.whiteSpace.resource.impl.WebViewRootResourceImpl" />
 	<bean class="com.whiteSpace.resource.impl.FBCredentailsControllerImpl">
-		<constructor-arg ref="fbConnectionFactory" index="0"/>
+		<constructor-arg ref="fbDataAccess" index="0"/>
 		<constructor-arg value="${fb.auth.redirect.url}" index="1"/>
-		
+	</bean>
+	
+	<bean id="fbDataAccess" class="com.whiteSpace.resource.impl.FBDataAccess">
+		<property name="connectionFactory" ref="fbConnectionFactory" />
 	</bean>
 
 </beans>

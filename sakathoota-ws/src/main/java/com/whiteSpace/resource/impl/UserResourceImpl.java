@@ -3,6 +3,8 @@ package com.whiteSpace.resource.impl;
 import com.whiteSpace.resource.iface.UserResource;
 import com.whiteSpace.da.iface.UserDataDAO;
 import com.whiteSpace.domain.common.types.User;
+import com.whiteSpace.domain.common.types.UserIdType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.core.Response;
@@ -21,8 +23,17 @@ public class UserResourceImpl implements UserResource {
 
     @Override
     public Response getUser(String id, String idType) {
+    	//Add validations code 
+    	User user = null;
+    	switch (UserIdType.fromValue(idType.toUpperCase())) {
+			case FACEBOOK_ID :
+				user = userDataDAO.getUserByFBId(Long.parseLong(id));
+				break;
 
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+			default :
+				break;
+		}
+        return Response.ok(user).build();  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override

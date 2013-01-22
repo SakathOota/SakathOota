@@ -6,86 +6,107 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created with IntelliJ IDEA.
- * User: sn1
- * Date: 1/16/13
- * Time: 11:03 PM
- * To change this template use File | Settings | File Templates.
+ * Created with IntelliJ IDEA. User: sn1 Date: 1/16/13 Time: 11:03 PM To change
+ * this template use File | Settings | File Templates.
  */
 @XmlRootElement(name = "User")
-@XmlType(name = "User", propOrder = {"id", "email", "facebookId", "name", "password", "dateOfBirth", "gender", "foodPref"})
+@XmlType(name = "User", propOrder = {"id", "email", "facebookId", "name",
+		"password", "dateOfBirth", "gender", "foodPref", "fbAccessToken", "fbAccessTokenExpires_On"})
 public class User implements Serializable {
 
-    private Integer id;
-    private String email;
-    private Long facebookId;
-    private String name;
-    private String password;
-    private Date dateOfBirth;
-    private Gender gender;
-    private FoodPreference foodPref;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    public FoodPreference getFoodPref() {
-        return foodPref;
-    }
+	private Integer id;
+	private String email;
+	private Long facebookId;
+	private String name;
+	private String password;
+	private Date dateOfBirth;
+	private Gender gender;
+	private FoodPreference foodPref;
+	private String fbAccessToken;
+	private Long fbAccessTokenExpires_On;
+	
+	public String getFbAccessToken() {
+		return fbAccessToken;
+	}
 
-    public void setFoodPref(FoodPreference foodPref) {
-        this.foodPref = foodPref;
-    }
+	public void setFbAccessToken(String fbAccessToken) {
+		this.fbAccessToken = fbAccessToken;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public Long getFbAccessTokenExpires_On() {
+		return fbAccessTokenExpires_On;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setFbAccessTokenExpires_On(Long fbAccessTokenExpires_On) {
+		this.fbAccessTokenExpires_On = fbAccessTokenExpires_On;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public FoodPreference getFoodPref() {
+		return foodPref;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setFoodPref(FoodPreference foodPref) {
+		this.foodPref = foodPref;
+	}
 
-    public Long getFacebookId() {
-        return facebookId;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setFacebookId(Long facebookId) {
-        this.facebookId = facebookId;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public Long getFacebookId() {
+		return facebookId;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setFacebookId(Long facebookId) {
+		this.facebookId = facebookId;
+	}
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Gender getGender() {
-        return gender;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
 }

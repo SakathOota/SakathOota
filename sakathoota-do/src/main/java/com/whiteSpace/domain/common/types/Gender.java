@@ -20,6 +20,15 @@ public enum Gender {
 
     private int value;
 
+    public static Gender forCode(int code) {
+        for (Gender type : Gender.values()) {
+            if (type.getValue() == code) {
+                return type;
+            }
+        }
+        return null;
+     }
+    
     private Gender(int value) {
         this.value = value;
     }

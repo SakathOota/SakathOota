@@ -19,6 +19,15 @@ public enum FoodPreference {
     VEG_EGG(3);
 
     private int value;
+    
+    public static FoodPreference forCode(int code) {
+        for (FoodPreference type : FoodPreference.values()) {
+            if (type.getValue() == code) {
+                return type;
+            }
+        }
+        return null;
+     }
 
     private FoodPreference(int value) {
         this.value = value;

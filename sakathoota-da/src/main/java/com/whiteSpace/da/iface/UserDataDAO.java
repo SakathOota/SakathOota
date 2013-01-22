@@ -13,5 +13,5 @@ public interface UserDataDAO {
     public User createUser(User user);
     public void getUserByEmail(String email);
     public void getUserById(String id);
-
+    public User getUserByFBId(Long fbId);
 }

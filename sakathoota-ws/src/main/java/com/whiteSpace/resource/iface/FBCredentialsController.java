@@ -24,6 +24,6 @@ public interface FBCredentialsController {
 	
 	@GET
 	@Path("/redirect")
-	public Response redirectCallbackl(@QueryParam("code") String code, @Context UriInfo uriInfo);
+	public Response redirectCallback(@QueryParam("code") String code, @Context UriInfo uriInfo);
 	
 }

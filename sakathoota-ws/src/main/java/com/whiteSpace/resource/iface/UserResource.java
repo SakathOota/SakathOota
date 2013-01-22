@@ -17,12 +17,13 @@ public interface UserResource {
 
     @GET
     @Path("/{id}")
-    public Response getUser(@PathParam("id") String id, @QueryParam("id_type") String idType);
+    public Response getUser(@PathParam("id") String id, @QueryParam("idType") String idType);
 
     @POST
     public Response createUser(User user);
 
 
+    
 
 
 }
