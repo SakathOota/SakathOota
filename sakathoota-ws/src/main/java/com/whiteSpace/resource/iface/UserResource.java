@@ -21,9 +21,5 @@ public interface UserResource {
 
     @POST
     public Response createUser(User user);
-
-
     
-
-
 }

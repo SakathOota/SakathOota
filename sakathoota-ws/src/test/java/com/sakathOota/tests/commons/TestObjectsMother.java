@@ -4,7 +4,7 @@ import com.whiteSpace.domain.common.types.FoodPreference;
 import com.whiteSpace.domain.common.types.Gender;
 import com.whiteSpace.domain.common.types.User;
 import com.whiteSpace.resource.json.types.Entry;
-import com.whiteSpace.resource.json.types.Notification;
+import com.whiteSpace.resource.json.types.FBNotification;
 
 import java.util.Date;
 
@@ -29,8 +29,8 @@ public class TestObjectsMother {
         return user;
     }
 
-    public static Notification getNewNotificationObject(){
-        Notification notification = new Notification();
+    public static FBNotification getNewNotificationObject(){
+        FBNotification notification = new FBNotification();
         notification.setObject("user");
 
         Entry entry1 = new Entry();

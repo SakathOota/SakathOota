@@ -32,5 +32,6 @@ public class FBDataAccess {
 		for (Checkin checkin : checkins) {
 			System.out.println(checkin.getPlace().getName());
 		}
+		
 	}
 }

@@ -33,6 +33,8 @@ public class UserRowMapper implements RowMapper {
 		user.setName(rs.getString("name"));
 		user.setGender(Gender.forCode(rs.getInt("gender")));
 		user.setFoodPref(FoodPreference.forCode(rs.getInt("food_pref")));
+		user.setFbAccessToken(rs.getString("fb_access_token"));
+		user.setFbAccessTokenExpires_On(rs.getLong("fb_acc_tok_expires_on"));
 		return user;
 	}
 

@@ -5,13 +5,21 @@ package com.whiteSpace.resource.impl;
 
 import javax.ws.rs.core.Response;
 
+import com.whiteSpace.da.iface.TxtWebDAO;
+import com.whiteSpace.domain.common.types.Notification;
+import com.whiteSpace.domain.common.types.TxtWebPhone;
 import com.whiteSpace.resource.iface.FBRealTimeNotificationResource;
 import com.whiteSpace.resource.iface.UserResource;
-import com.whiteSpace.resource.json.types.Notification;
+import com.whiteSpace.resource.json.types.FBNotification;
+import com.whiteSpace.ws.commons.FB2NativeMapper;
+import com.whiteSpace.ws.commons.TxtWebPush;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.String;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Shivakumar N
@@ -21,8 +29,8 @@ import java.lang.String;
 public class FBRealTimeNotificationResourceImpl implements FBRealTimeNotificationResource {
 	private static final Logger logger = Logger.getLogger(FBRealTimeNotificationResourceImpl.class);
 
-    @Autowired
-    private UserResource userResource;
+	@Autowired
+	private TxtWebDAO txtWebDAO;
     
     private FBDataAccess fbDataAccess;
     
@@ -31,8 +39,14 @@ public class FBRealTimeNotificationResourceImpl implements FBRealTimeNotificatio
 	}
 
 
-	public Response postCallBackUrl(Notification notification) {
-
+	public Response postCallBackUrl(FBNotification notification) {
+		TxtWebPush txtWebPush = new TxtWebPush();
+		List<Notification> notifications = new ArrayList<Notification>();
+		notifications.add(FB2NativeMapper.getFBNotification(notification));
+		List<TxtWebPhone> phones = txtWebDAO.getActivePhones();
+		for (TxtWebPhone txtWebPhone : phones) {
+			txtWebPush.processRequest(notifications, txtWebPhone.getEncodedNumber());
+		}
 		return null;
 	}
 

@@ -2,6 +2,7 @@ package com.whiteSpace.da.impl;
 
 import com.whiteSpace.da.iface.UserDataDAO;
 import com.whiteSpace.da.rowMapper.UserRowMapper;
+import com.whiteSpace.domain.common.types.FoodPreference;
 import com.whiteSpace.domain.common.types.User;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -38,7 +39,10 @@ public class UserDataDAOImpl extends BaseDAOImpl implements UserDataDAO {
 				preparedStatement.setDate(i++, new Date(user.getDateOfBirth()
 						.getTime()));
 				preparedStatement.setInt(i++, user.getGender().getValue());
-				preparedStatement.setInt(i++, user.getFoodPref().getValue());
+				if(user.getFoodPref() == null){
+					user.setFoodPref(FoodPreference.NOT_SPECIFIED);
+				}
+				preparedStatement.setInt(i++, user.getFoodPref().getValue()) ;
 				preparedStatement.setString(i++, user.getFbAccessToken());
 				preparedStatement.setLong(i++, user.getFbAccessTokenExpires_On());
 				return preparedStatement; // To change body of implemented
@@ -53,25 +57,46 @@ public class UserDataDAOImpl extends BaseDAOImpl implements UserDataDAO {
 	}
 
 	@Override
-	public void getUserByEmail(String email) {
+	public User getUserByEmail(String email) {
+		return null;
 
 	}
 
 	@Override
-	public void getUserById(String id) {
+	public User getUserById(String id) {
+		return null;
 
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public User getUserByFBId(Long fbId) {
-		String sql = "select user_id, email, fb_id, name, password, dob, gender, food_pref from users where fb_id = ?";
+		String sql = "select user_id, email, fb_id, name, password, dob, gender, food_pref, fb_access_token, fb_acc_tok_expires_on from users where fb_id = ?";
 		List<User> users = jdbcTemplate.query(sql, new Object[]{fbId}, new UserRowMapper());
 		if(users.size() > 0){
 			return users.get(0);
 		} else {
-			//FIXME: throw record not found exceptions
 			return null;
 		}
 	}
+
+	@Override
+	public void updateAccessTokenByFBId(final Long fbId, final String accessToken, final Long expiryTime) {
+		final String sql = "update users set fb_access_token = ?, fb_acc_tok_expires_on = ? where fb_id = ?";
+
+		PreparedStatementCreator preparedStatementCreator = new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con)
+					throws SQLException {
+				PreparedStatement preparedStatement = con.prepareStatement(sql);
+				int i = 1;
+				preparedStatement.setString(i++, accessToken);
+				preparedStatement.setLong(i++, expiryTime);
+				preparedStatement.setLong(i++, fbId);
+				return preparedStatement;
+			}
+		};
+		jdbcTemplate.update(preparedStatementCreator);
+	}
+
 }

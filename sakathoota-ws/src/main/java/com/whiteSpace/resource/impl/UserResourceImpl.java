@@ -29,7 +29,7 @@ public class UserResourceImpl implements UserResource {
 			case FACEBOOK_ID :
 				user = userDataDAO.getUserByFBId(Long.parseLong(id));
 				break;
-
+				
 			default :
 				break;
 		}

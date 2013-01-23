@@ -12,7 +12,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.whiteSpace.resource.json.types.Notification;
+import com.whiteSpace.resource.json.types.FBNotification;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -32,5 +32,5 @@ public interface FBRealTimeNotificationResource {
 	@POST
     @Consumes(MediaType.APPLICATION_JSON)
 	@Path("/")
-	public Response postCallBackUrl(Notification notification);
+	public Response postCallBackUrl(FBNotification notification);
 }

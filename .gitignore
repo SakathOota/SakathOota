@@ -5,3 +5,6 @@
 *test-output*
 *.project*
 *.log
+*.classpath
+
+*.prefs

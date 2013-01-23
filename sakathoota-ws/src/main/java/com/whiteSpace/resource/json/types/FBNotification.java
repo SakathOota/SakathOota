@@ -10,7 +10,7 @@ import java.util.List;
  * Time: 11:22 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Notification {
+public class FBNotification {
     public String getObject() {
         return object;
     }
