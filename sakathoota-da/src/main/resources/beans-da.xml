@@ -29,4 +29,5 @@
     </bean>
 
     <bean id="userDAO"  class="com.whiteSpace.da.impl.UserDataDAOImpl" parent="baseDAO" />
+    <bean id="txtDao" class="com.whiteSpace.da.impl.TxtWebDAOImpl" />
 </beans>
