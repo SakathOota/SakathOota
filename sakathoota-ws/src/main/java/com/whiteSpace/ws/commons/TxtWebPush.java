@@ -43,6 +43,7 @@ public class TxtWebPush{
         if(message == null)
             message = "";
         String response = "Trying to push a message to your mobile<br/>";
+        System.out.println(message);
         int result = sendPushMessage(message, mobileHash);
         /*
         0
@@ -95,6 +96,7 @@ public class TxtWebPush{
         else {
             response += "!!!Error occured!!!<br/>Error code : "+ result;
         }
+        System.err.println(response);
        // sendResponse(httpResponse, response);
     }
     public static int sendPushMessage(String message, String mobileHash) {
@@ -142,12 +144,12 @@ public class TxtWebPush{
     }
 	
 	public static void main(String args[]){
-		String mobile = "77035B27-E60E-4844-9F78-C35404BCA0BD";
+		String mobile = "cc56a1cc-ae95-4e8f-b4df-6a9cf7d03837";
 		
 		TxtWebPush push = new TxtWebPush();
 		List<Notification> list =  new ArrayList<Notification>();
 		Notification notification = new Notification();
-		notification.setData("hello from sakathOta");
+		notification.setData("huhha haaha .. i can hack into ur mobile :P ");
 		
 		list.add(notification);
 		push.processRequest(list, mobile);

@@ -13,7 +13,7 @@ import javax.ws.rs.core.Response;
  *
  * @since Jan 23, 2013 2:13:15 PM
  */
-@Path("txtweb")
+@Path("/txtweb")
 public interface TxtWebResource {
 	
 	@GET
