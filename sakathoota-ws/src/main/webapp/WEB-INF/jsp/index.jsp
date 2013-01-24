@@ -8,6 +8,7 @@
 			<tr>
 				<td></td>
 				<td><a href="fbauth/login">Login with Facebook</a></td>
+                <td><a href="fsauth/login">Login with FourSquare</a></td>
 			</tr>
 		</tbody>
 	</table>

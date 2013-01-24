@@ -86,12 +86,14 @@ CREATE TABLE `users` (
   `create_date` datetime DEFAULT NULL,
   `update_date` datetime DEFAULT NULL,
   `fb_id` bigint(20) DEFAULT NULL,
+  `fs_id` bigint(20) DEFAULT NULL,
   `name` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   `dob` datetime DEFAULT NULL,
   `gender` int(2) DEFAULT NULL,
   `food_pref` int(2) DEFAULT NULL,
   `fb_access_token` varchar(200) DEFAULT NULL,
+  `fs_access_token` varchar(200) DEFAULT NULL,
   `fb_acc_tok_expires_on` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
@@ -104,7 +106,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'something@nothing.com',NULL,'2013-01-20 20:43:38',NULL,'shiva',NULL,NULL,NULL,NULL,NULL,NULL),(3,'shiva.n404@gmail.com','2013-01-23 14:06:17','2013-01-23 14:06:17',100001609165007,'Shiva Kumar',NULL,'1989-08-13 00:00:00',1,0,'AAAGNxAItAjIBADIt3ymGdDbreNF33uiI5NzrEAKGxez1tl3AFPPzRqCAKZCytBT1ZBg9goEQNZAw2ZCUQho80RYoYQCFmeyxb6DeeC2PnwZDZD',1359809773014);
+INSERT INTO `users` VALUES (1,'something@nothing.com',NULL,'2013-01-20 20:43:38',NULL,NULL,'shiva',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'shiva.n404@gmail.com','2013-01-23 14:06:17','2013-01-23 14:06:17',100001609165007,'Shiva Kumar',NULL,NULL,'1989-08-13 00:00:00',1,0,NULL,'AAAGNxAItAjIBADIt3ymGdDbreNF33uiI5NzrEAKGxez1tl3AFPPzRqCAKZCytBT1ZBg9goEQNZAw2ZCUQho80RYoYQCFmeyxb6DeeC2PnwZDZD',1359809773014);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;

@@ -4,8 +4,6 @@ import com.whiteSpace.da.iface.UserDataDAO;
 import com.whiteSpace.da.rowMapper.UserRowMapper;
 import com.whiteSpace.domain.common.types.FoodPreference;
 import com.whiteSpace.domain.common.types.User;
-
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -80,7 +78,8 @@ public class UserDataDAOImpl extends BaseDAOImpl implements UserDataDAO {
 		}
 	}
 
-	@Override
+
+    @Override
 	public void updateAccessTokenByFBId(final Long fbId, final String accessToken, final Long expiryTime) {
 		final String sql = "update users set fb_access_token = ?, fb_acc_tok_expires_on = ? where fb_id = ?";
 
@@ -98,5 +97,34 @@ public class UserDataDAOImpl extends BaseDAOImpl implements UserDataDAO {
 		};
 		jdbcTemplate.update(preparedStatementCreator);
 	}
+
+    @Override
+    public void updateAccessTokenByFSId(final Long fsId, final String accessToken) {
+        final String sql = "update users set fs_access_token = ? where fs_id = ?";
+
+        PreparedStatementCreator preparedStatementCreator = new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection con)
+                    throws SQLException {
+                PreparedStatement preparedStatement = con.prepareStatement(sql);
+                int i = 1;
+                preparedStatement.setString(i++, accessToken);
+                preparedStatement.setLong(i++, fsId);
+                return preparedStatement;
+            }
+        };
+        jdbcTemplate.update(preparedStatementCreator);
+    }
+
+    @Override
+    public User getUserByFSId(Long fsId) {
+        String sql = "select user_id, email, fb_id, name, password, dob, gender, food_pref, fb_access_token, fb_acc_tok_expires_on, fsAccessToken,fs_id  from users where fs_id = ?";
+        List<User> users = jdbcTemplate.query(sql, new Object[]{fsId}, new UserRowMapper());
+        if(users.size() > 0){
+            return users.get(0);
+        } else {
+            return null;
+        }
+    }
 
 }

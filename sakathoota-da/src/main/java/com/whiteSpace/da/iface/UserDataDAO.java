@@ -14,8 +14,11 @@ public interface UserDataDAO {
     public User getUserByEmail(String email);
     public User getUserById(String id);
     public User getUserByFBId(Long fbId);
+    public User getUserByFSId(Long fsId);
     
     //update accessToken and expiryDay by fbId
     public void updateAccessTokenByFBId(Long fbId, String accessToken, Long expiryTime);
-    
+
+    public void updateAccessTokenByFSId(Long fsId, String accessToken);
+
 }

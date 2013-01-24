@@ -4,6 +4,9 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
 	<display-name>Subscription Data Exchange</display-name>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/beans-web.xml</param-value>

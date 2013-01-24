@@ -22,12 +22,14 @@ public class User implements Serializable {
 	private Integer id;
 	private String email;
 	private Long facebookId;
+    private Long foursquareId;
 	private String name;
 	private String password;
 	private Date dateOfBirth;
 	private Gender gender;
 	private FoodPreference foodPref;
 	private String fbAccessToken;
+    private String fsAccessToken;
 	private Long fbAccessTokenExpires_On;
 	
 	public String getFbAccessToken() {
@@ -53,6 +55,22 @@ public class User implements Serializable {
 	public void setFoodPref(FoodPreference foodPref) {
 		this.foodPref = foodPref;
 	}
+
+    public Long getFoursquareId() {
+        return foursquareId;
+    }
+
+    public void setFoursquareId(Long foursquareId) {
+        this.foursquareId = foursquareId;
+    }
+
+    public String getFsAccessToken() {
+        return fsAccessToken;
+    }
+
+    public void setFsAccessToken(String fsAccessToken) {
+        this.fsAccessToken = fsAccessToken;
+    }
 
 	public Integer getId() {
 		return id;

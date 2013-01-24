@@ -16,6 +16,8 @@
 
 	<import resource="classpath*:beans-da.xml" />
 	<import resource="classpath*:beans-ws-fb.xml" />
+    <import resource="classpath*:beans-ws-fs.xml" />
+
 
 	<bean class="com.whiteSpace.resource.impl.FBRealTimeNotificationResourceImpl">
 		<property name="fbDataAccess" ref="fbDataAccess" />
@@ -27,7 +29,8 @@
 	<bean class="com.whiteSpace.resource.impl.WebViewRootResourceImpl">
 		<property name="dataAccess" ref="fbDataAccess" />
 	</bean>
-	<bean class="com.whiteSpace.resource.impl.FBCredentailsControllerImpl">
+
+	<bean class="com.whiteSpace.resource.impl.FBCredentialsControllerImpl">
 		<constructor-arg ref="fbDataAccess" index="0" />
 		<constructor-arg value="${fb.auth.redirect.url}"
 			index="1" />
@@ -36,5 +39,9 @@
 	<bean id="fbDataAccess" class="com.whiteSpace.resource.impl.FBDataAccess">
 		<property name="connectionFactory" ref="fbConnectionFactory" />
 	</bean>
+
+    <bean class="com.whiteSpace.resource.impl.FSCredentialsControllerImpl">
+
+    </bean>
 
 </beans>
