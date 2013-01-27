@@ -118,7 +118,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`shiva`@`localhost`*/ /*!50003 TRIGGER user_create BEFORE INSERT ON users 
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER user_create BEFORE INSERT ON users
 FOR EACH ROW
 SET NEW.create_date = NOW() , NEW.update_date = NOW() */;;
 DELIMITER ;
@@ -135,7 +135,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`shiva`@`localhost`*/ /*!50003 TRIGGER user_update BEFORE UPDATE ON users 
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER user_update BEFORE UPDATE ON users
 FOR EACH ROW
 SET NEW.update_date = NOW() */;;
 DELIMITER ;

@@ -10,8 +10,8 @@ import java.util.Date;
  * this template use File | Settings | File Templates.
  */
 @XmlRootElement(name = "User")
-@XmlType(name = "User", propOrder = {"id", "email", "facebookId", "name",
-		"password", "dateOfBirth", "gender", "foodPref", "fbAccessToken", "fbAccessTokenExpires_On"})
+@XmlType(name = "User", propOrder = {"id", "email", "facebookId","foursquareId", "name",
+		"password", "dateOfBirth", "gender", "foodPref", "fbAccessToken","fsAccessToken", "fbAccessTokenExpires_On"})
 public class User implements Serializable {
 
 	/**

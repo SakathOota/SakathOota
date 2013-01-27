@@ -21,7 +21,7 @@ import java.util.List;
 public class UserDataDAOImpl extends BaseDAOImpl implements UserDataDAO {
 	@Override
 	public User createUser(final User user) {
-		final String sql = "insert into users (email, fb_id, name, password, dob, gender, food_pref, fb_access_token, fb_acc_tok_expires_on) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		final String sql = "insert into users (email, fb_id,fs_id, name, password, dob, gender, food_pref, fb_access_token,fs_access_token, fb_acc_tok_expires_on) values(?,?,?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		PreparedStatementCreator preparedStatementCreator = new PreparedStatementCreator() {
 			@Override
@@ -32,6 +32,7 @@ public class UserDataDAOImpl extends BaseDAOImpl implements UserDataDAO {
 				int i = 1;
 				preparedStatement.setString(i++, user.getEmail());
 				preparedStatement.setLong(i++, user.getFacebookId());
+                preparedStatement.setLong(i++, user.getFoursquareId());
 				preparedStatement.setString(i++, user.getName());
 				preparedStatement.setString(i++, user.getPassword());
 				preparedStatement.setDate(i++, new Date(user.getDateOfBirth()
@@ -42,6 +43,7 @@ public class UserDataDAOImpl extends BaseDAOImpl implements UserDataDAO {
 				}
 				preparedStatement.setInt(i++, user.getFoodPref().getValue()) ;
 				preparedStatement.setString(i++, user.getFbAccessToken());
+                preparedStatement.setString(i++, user.getFsAccessToken());
 				preparedStatement.setLong(i++, user.getFbAccessTokenExpires_On());
 				return preparedStatement; // To change body of implemented
 											// methods use File | Settings |
@@ -118,7 +120,7 @@ public class UserDataDAOImpl extends BaseDAOImpl implements UserDataDAO {
 
     @Override
     public User getUserByFSId(Long fsId) {
-        String sql = "select user_id, email, fb_id, name, password, dob, gender, food_pref, fb_access_token, fb_acc_tok_expires_on, fsAccessToken,fs_id  from users where fs_id = ?";
+        String sql = "select user_id, email,,fs_id, name, password, dob, gender, food_pref,fsAccessToken  from users where fs_id = ?";
         List<User> users = jdbcTemplate.query(sql, new Object[]{fsId}, new UserRowMapper());
         if(users.size() > 0){
             return users.get(0);

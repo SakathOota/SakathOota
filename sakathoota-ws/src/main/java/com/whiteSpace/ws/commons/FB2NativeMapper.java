@@ -3,17 +3,16 @@
  */
 package com.whiteSpace.ws.commons;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import org.springframework.social.facebook.api.FacebookProfile;
-
 import com.whiteSpace.domain.common.types.FoodPreference;
 import com.whiteSpace.domain.common.types.Gender;
 import com.whiteSpace.domain.common.types.Notification;
 import com.whiteSpace.domain.common.types.User;
 import com.whiteSpace.resource.json.types.FBNotification;
+import org.springframework.social.facebook.api.FacebookProfile;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author Shivakumar N
@@ -27,10 +26,12 @@ public class FB2NativeMapper {
 		
 		user.setEmail(userProfile.getEmail());
 		user.setFacebookId(Long.parseLong(userProfile.getId()));
+        user.setFoursquareId(Long.parseLong("00000000"));
 		user.setName(userProfile.getName());
 		user.setDateOfBirth(getBirthDateDate(userProfile.getBirthday()));
 		user.setGender(getGender(userProfile.getGender()));
 		user.setFbAccessToken(accessToken);
+        user.setFsAccessToken("XXXXX");
 		user.setFbAccessTokenExpires_On(expiresOn);
 		user.setFoodPref(FoodPreference.NOT_SPECIFIED);
 		return user;	

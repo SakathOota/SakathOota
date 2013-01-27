@@ -24,6 +24,6 @@ public interface FSCredentialsController {
 
     @GET
     @Path("/redirect")
-    public Response redirectCallback(String authorizationCode, UriInfo uriInfo) throws FoursquareApiException, MalformedURLException;
+    public Response redirectCallback(/*@PathParam("code")*/ String authorizationCode ,@Context UriInfo uriInfo) throws FoursquareApiException, MalformedURLException;
 
 }

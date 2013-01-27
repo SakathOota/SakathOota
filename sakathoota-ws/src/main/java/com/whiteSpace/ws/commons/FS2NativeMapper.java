@@ -19,16 +19,20 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 public class FS2NativeMapper {
-    public static User mapUser(CompleteUser userProfile, String accessToken){
+    public static User mapUser(CompleteUser userProfile, String accessToken) throws ParseException {
         User user = new User();
+        Date date = new SimpleDateFormat("MM/dd/yyyy").parse("00/00/0000");
+        long testValue = 12223334444L;
 
-        user.setEmail(null);
+        user.setEmail(userProfile.getContact().getEmail());
+        user.setFacebookId(Long.parseLong("0000"));
         user.setFoursquareId(Long.parseLong(userProfile.getId()));
-        user.setName(userProfile.getFirstName()+userProfile.getLastName());
-        user.setDateOfBirth(null);
+        user.setName(userProfile.getFirstName() + userProfile.getLastName());
+        user.setDateOfBirth(date);
         user.setGender(getGender(userProfile.getGender()));
+        user.setFbAccessToken("XXX");
         user.setFsAccessToken(accessToken);
-        user.setFbAccessTokenExpires_On(null);
+        user.setFbAccessTokenExpires_On(Long.parseLong("0000"));
         user.setFoodPref(FoodPreference.NOT_SPECIFIED);
         return user;
     }
