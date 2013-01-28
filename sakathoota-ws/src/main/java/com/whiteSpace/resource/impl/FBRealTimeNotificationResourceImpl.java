@@ -39,13 +39,14 @@ public class FBRealTimeNotificationResourceImpl implements FBRealTimeNotificatio
 	}
 
 
-	public Response postCallBackUrl(FBNotification notification) {
+	public Response postCallBackUrl(FBNotification fbNotification) {
+		Notification notification = FB2NativeMapper.getFBNotification(fbNotification);
+		
+		//FIXME: Remove sending to msg
 		TxtWebPush txtWebPush = new TxtWebPush();
-		List<Notification> notifications = new ArrayList<Notification>();
-		notifications.add(FB2NativeMapper.getFBNotification(notification));
 		List<TxtWebPhone> phones = txtWebDAO.getActivePhones();
 		for (TxtWebPhone txtWebPhone : phones) {
-			txtWebPush.processRequest(notifications, txtWebPhone.getEncodedNumber());
+			txtWebPush.processRequest(notification, txtWebPhone.getEncodedNumber());
 		}
 		return null;
 	}

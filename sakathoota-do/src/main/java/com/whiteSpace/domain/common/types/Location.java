@@ -14,12 +14,65 @@ import java.io.Serializable;
 @XmlRootElement(name = "Location")
 @XmlType(name = "Location")
 public class Location implements Serializable {
-    String longitude;
-    String latitude;
-    String subject_id;
-    String name;
-    String category;
-    //Addrrss
-    String phone;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private String longitude;
+    private String latitude;
+    private Integer id;
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	private String name;
+    private String category;
+    //Address
+    private String phone;
+    private String landMark;
+    
+    public String getLandMark() {
+		return landMark;
+	}
+	public void setLandMark(String landMark) {
+		this.landMark = landMark;
+	}
+
+    public String getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+	public String getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 
 }

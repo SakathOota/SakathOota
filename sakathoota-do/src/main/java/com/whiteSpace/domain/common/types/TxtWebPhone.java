@@ -6,7 +6,7 @@ package com.whiteSpace.domain.common.types;
 /**
  * @author Shivakumar N
  *
- * @since May 1, 2012 9:13:59 PM
+ * @since Jan 23, 2013 2:13:15 PM
  */
 public class TxtWebPhone {
 

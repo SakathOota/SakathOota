@@ -2,6 +2,7 @@ package com.sakathOota.tests.commons;
 
 import com.whiteSpace.domain.common.types.FoodPreference;
 import com.whiteSpace.domain.common.types.Gender;
+import com.whiteSpace.domain.common.types.Location;
 import com.whiteSpace.domain.common.types.User;
 import com.whiteSpace.resource.json.types.Entry;
 import com.whiteSpace.resource.json.types.FBNotification;
@@ -41,5 +42,16 @@ public class TestObjectsMother {
         notification.getEntry().add(entry1);
         //entry1.setChanged_fields();
         return notification;
+    }
+    
+    public static Location getNewLocationObject(){
+    	Location location = new Location();
+    	location.setCategory("Pub");
+    	location.setLandMark("PESIT");
+    	location.setLatitude("123.45");
+    	location.setLongitude("234.5");
+    	location.setName("Junlkizz");
+    	location.setPhone("9535890448");
+    	return location;
     }
 }

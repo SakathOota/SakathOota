@@ -1,16 +1,9 @@
 package com.whiteSpace.ws.commons;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -34,10 +27,10 @@ public class TxtWebPush{
     private static final String appKey = "cc2430ed-db9b-4687-b4e9-292038f44eb2";
     private static final String pubKey = "094BADB5-C418-4877-B11A-94E8D4431EB2";
     
-	public void processRequest(List<Notification> notificationList, String mobile){
+	public void processRequest(Notification notification, String mobile){
 
 		String mobileHash =mobile;
-        String message = notificationList.get(0).getData();
+        String message = notification.getData();
         if(mobileHash == null)
             mobileHash = "";
         if(message == null)
@@ -145,14 +138,9 @@ public class TxtWebPush{
 	
 	public static void main(String args[]){
 		String mobile = "cc56a1cc-ae95-4e8f-b4df-6a9cf7d03837";
-		
 		TxtWebPush push = new TxtWebPush();
-		List<Notification> list =  new ArrayList<Notification>();
 		Notification notification = new Notification();
 		notification.setData("huhha haaha .. i can hack into ur mobile :P ");
-		
-		list.add(notification);
-		push.processRequest(list, mobile);
+		push.processRequest(notification, mobile);
 	}
-
 }

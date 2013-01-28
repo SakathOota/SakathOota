@@ -1,6 +1,7 @@
 package com.whiteSpace.resource.impl;
 
 import com.whiteSpace.resource.iface.UserResource;
+import com.whiteSpace.ws.commons.ResponseHandler;
 import com.whiteSpace.da.iface.UserDataDAO;
 import com.whiteSpace.domain.common.types.User;
 import com.whiteSpace.domain.common.types.UserIdType;
@@ -39,7 +40,7 @@ public class UserResourceImpl implements UserResource {
     @Override
     public Response createUser(User user) {
         //FIXME: write validation code
-        userDataDAO.createUser(user);
-        return null;
+    	user = userDataDAO.createUser(user);
+        return ResponseHandler.getOKResponse(user);
     }
 }

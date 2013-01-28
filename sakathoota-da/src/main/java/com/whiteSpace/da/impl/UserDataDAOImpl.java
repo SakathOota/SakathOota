@@ -5,7 +5,6 @@ import com.whiteSpace.da.rowMapper.UserRowMapper;
 import com.whiteSpace.domain.common.types.FoodPreference;
 import com.whiteSpace.domain.common.types.User;
 
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -45,9 +44,7 @@ public class UserDataDAOImpl extends BaseDAOImpl implements UserDataDAO {
 				preparedStatement.setInt(i++, user.getFoodPref().getValue()) ;
 				preparedStatement.setString(i++, user.getFbAccessToken());
 				preparedStatement.setLong(i++, user.getFbAccessTokenExpires_On());
-				return preparedStatement; // To change body of implemented
-											// methods use File | Settings |
-											// File Templates.
+				return preparedStatement;
 			}
 		};
 		KeyHolder keyHolder = new GeneratedKeyHolder();
