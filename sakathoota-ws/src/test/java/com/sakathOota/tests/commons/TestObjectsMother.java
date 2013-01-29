@@ -48,10 +48,12 @@ public class TestObjectsMother {
     	Location location = new Location();
     	location.setCategory("Pub");
     	location.setLandMark("PESIT");
-    	location.setLatitude("123.45");
-    	location.setLongitude("234.5");
+    	location.setLatitude(123.45);
+    	location.setLongitude(234.5);
     	location.setName("Junlkizz");
     	location.setPhone("9535890448");
+    	location.setStreet("PESIT");
+    	location.setCity("Bangalore");
     	return location;
     }
 }

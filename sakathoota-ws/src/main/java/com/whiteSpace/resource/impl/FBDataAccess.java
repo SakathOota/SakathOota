@@ -12,7 +12,7 @@ import org.springframework.social.oauth2.AccessGrant;
 
 /**
  * @author Shivakumar N
- *
+ * 
  * @since Jan 22, 2013 4:42:50 PM
  */
 public class FBDataAccess {
@@ -25,13 +25,12 @@ public class FBDataAccess {
 	public void setConnectionFactory(FacebookConnectionFactory connectionFactory) {
 		this.connectionFactory = connectionFactory;
 	}
-	
-	public void getUserLatestCheckin(String accessToken){
+
+	public List<Checkin> getUserCheckins(String accessToken) {
 		Facebook facebook = connectionFactory.createConnection(new AccessGrant(accessToken)).getApi();
 		List<Checkin> checkins = facebook.placesOperations().getCheckins();
-		for (Checkin checkin : checkins) {
-			System.out.println(checkin.getPlace().getName());
-		}
-		
+		return checkins;
 	}
+	
+	
 }

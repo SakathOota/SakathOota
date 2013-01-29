@@ -24,4 +24,10 @@ public class UserTest extends TestBase {
     public void getUserByFBIdTest(){
     	resource.path("users/1234").queryParam("idType", "FACEBOOK_ID").get(ClientResponse.class);
     }
+    
+    @Test
+    public void getLatestCheckin(){
+    	resource.path("users/100005009113735/fb/checkins/latest").queryParam("idType", "FACEBOOK_ID").get(ClientResponse.class);
+    }
+    
 }

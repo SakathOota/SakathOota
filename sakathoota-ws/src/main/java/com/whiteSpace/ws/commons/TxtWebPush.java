@@ -24,7 +24,7 @@ import com.whiteSpace.domain.common.types.Notification;
 public class TxtWebPush{
 
     private static final long serialVersionUID = 5704094472222822353L;
-    private static final String appKey = "cc2430ed-db9b-4687-b4e9-292038f44eb2";
+    private static final String appKey = "5f2b5eaf-389d-4025-bc2c-adc1ee0129ae";
     private static final String pubKey = "094BADB5-C418-4877-B11A-94E8D4431EB2";
     
 	public void processRequest(Notification notification, String mobile){

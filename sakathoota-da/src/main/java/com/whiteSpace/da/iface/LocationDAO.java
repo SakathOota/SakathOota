@@ -4,6 +4,7 @@
 package com.whiteSpace.da.iface;
 
 import com.whiteSpace.domain.common.types.Location;
+import com.whiteSpace.domain.common.types.Locations;
 
 /**
  * @author Shivakumar N
@@ -12,4 +13,6 @@ import com.whiteSpace.domain.common.types.Location;
  */
 public interface LocationDAO {
 	public Location createLocation(Location location);
+	public Locations getLocationsByPartialName(String partialName);
+	public Location getLocationByFBLocationId(Long fbLocationId);
 }

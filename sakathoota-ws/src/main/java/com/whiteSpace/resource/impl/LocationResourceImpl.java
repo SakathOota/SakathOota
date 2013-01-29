@@ -2,6 +2,7 @@ package com.whiteSpace.resource.impl;
 
 import com.whiteSpace.da.iface.LocationDAO;
 import com.whiteSpace.domain.common.types.Location;
+import com.whiteSpace.domain.common.types.Locations;
 import com.whiteSpace.resource.iface.LocationResource;
 import com.whiteSpace.ws.commons.ResponseHandler;
 
@@ -32,4 +33,11 @@ public class LocationResourceImpl implements LocationResource {
     	location = locationDAO.createLocation(location);
     	return ResponseHandler.getOKResponse(location);  //To change body of implemented methods use File | Settings | File Templates.
     }
+
+	@Override
+	public Response getLocationsByPartialName(String name) {
+		//FIXME: Add validation code
+		Locations locations = locationDAO.getLocationsByPartialName(name);
+		return ResponseHandler.getOKResponse(locations);
+	}
 }

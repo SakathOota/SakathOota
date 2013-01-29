@@ -7,10 +7,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.social.facebook.api.Checkin;
 import org.springframework.social.facebook.api.FacebookProfile;
 
 import com.whiteSpace.domain.common.types.FoodPreference;
 import com.whiteSpace.domain.common.types.Gender;
+import com.whiteSpace.domain.common.types.Location;
+import com.whiteSpace.domain.common.types.Locations;
 import com.whiteSpace.domain.common.types.Notification;
 import com.whiteSpace.domain.common.types.User;
 import com.whiteSpace.resource.json.types.FBNotification;
@@ -36,12 +39,22 @@ public class FB2NativeMapper {
 		return user;	
 	}
 	
+	@Deprecated
 	public static Notification getFBNotification(FBNotification fbNotification){
 		Notification notification = new Notification();
 		notification.setData(fbNotification.getEntry().get(0).getChanged_fields().get(0));
-		
 		return notification;
-		
+	}
+	
+	public static Location mapLocation(Checkin checkin) {
+		Location location = new Location();
+		location.setFbLocationId(Long.parseLong(checkin.getPlace().getId()));
+		location.setName(checkin.getPlace().getName());
+		location.setLongitude(checkin.getPlace().getLocation().getLongitude());
+		location.setLatitude(checkin.getPlace().getLocation().getLatitude());
+		location.setStreet(checkin.getPlace().getLocation().getStreet());
+		location.setCity(checkin.getPlace().getLocation().getCity());
+		return location;
 	}
 	
 	private static Date getBirthDateDate(String dateString){

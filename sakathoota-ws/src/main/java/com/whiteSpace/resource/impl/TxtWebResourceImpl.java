@@ -26,7 +26,8 @@ public class TxtWebResourceImpl implements TxtWebResource {
 		String msg = null;
 		if (txtWebMsg == null) {
 			msg = "Please enter Mobile number <br /> Format:<br />@gfood.u 9988776655";
-			return Response.ok(msg).build();
+			
+			return Response.ok(buildResponse(msg)).header("txtweb-appkey", "5f2b5eaf-389d-4025-bc2c-adc1ee0129ae").build();
 		} else {
 			TxtWebPhone txtWebPhone = new TxtWebPhone();
 			txtWebPhone.setEncodedNumber(txtWebMobile);
@@ -34,6 +35,13 @@ public class TxtWebResourceImpl implements TxtWebResource {
 			txtWebPhone.setActive(true);
 			txtWebDAO.setTxtWebPhone(txtWebPhone);
 		}
-		return Response.ok("Added Successfully").build();
+		return Response.ok(buildResponse("Added Successfully")).header("txtweb-appkey", "5f2b5eaf-389d-4025-bc2c-adc1ee0129ae").build();
+	}
+	
+	private String buildResponse(String msg){
+		return "<html><head><meta name=\"txtweb-appkey\" content=\"5f2b5eaf-389d-4025-bc2c-adc1ee0129ae\" /></head><body>"
+		+msg 
+		+"</body></html>";
 	}
 }
+

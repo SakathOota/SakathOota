@@ -46,7 +46,7 @@ public class WebViewRootResourceImpl implements WebViewRootResource {
 		// AAAGNxAItAjIBALzZBT9bIFJIaJLP0sy7ZCDCzIbHHyNiK5ESx4ThZCbepTko85KyAss9xuLulfxszIYZCmTjJyAHLTk2sPV2Yu0hVCnp7gZDZD
 		User user = userDataDAO.getUserByFBId(Long.parseLong(id));
 		if(user != null){
-			dataAccess.getUserLatestCheckin(userDataDAO.getUserByFBId(Long.parseLong(id)).getFbAccessToken());
+		//	dataAccess.getUserLatestCheckin(userDataDAO.getUserByFBId(Long.parseLong(id)).getFbAccessToken());
 		}
 		
 		return Response.ok(new Viewable("/user.jsp")).build();

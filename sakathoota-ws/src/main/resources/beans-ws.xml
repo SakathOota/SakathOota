@@ -17,11 +17,16 @@
 	<import resource="classpath*:beans-da.xml" />
 	<import resource="classpath*:beans-ws-fb.xml" />
 
+	<!-- Resources -->
 	<bean class="com.whiteSpace.resource.impl.FBRealTimeNotificationResourceImpl">
-		<property name="fbDataAccess" ref="fbDataAccess" />
+		<property name="userFacebookOperations" ref="userFacebookOperations" />
 	</bean>
 
-	<bean class="com.whiteSpace.resource.impl.UserResourceImpl" />
+	<bean class="com.whiteSpace.resource.impl.UserResourceImpl" >
+		<property name="fbDataAccess" ref="fbDataAccess" />
+		<property name="userFacebookOperations" ref="userFacebookOperations" />
+	</bean>
+	
 	<bean class="com.whiteSpace.resource.impl.LocationResourceImpl" />
 	
 	<bean class="com.whiteSpace.resource.impl.WebViewRootResourceImpl">
@@ -38,5 +43,10 @@
 	</bean>
 	
 	<bean class="com.whiteSpace.resource.impl.TxtWebResourceImpl" />
+	
+	<bean id="userFacebookOperations" class="com.whiteSpace.resource.delegators.UserFacebookOperations">
+		<property name="fbDataAccess" ref="fbDataAccess" />
+	</bean>
+	
 
 </beans>

@@ -9,3 +9,5 @@
 
 *.prefs
 *logs*
+
+sakathoota-da/src/main/resources/local.properties

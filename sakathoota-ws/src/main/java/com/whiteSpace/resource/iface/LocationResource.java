@@ -4,6 +4,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 import com.whiteSpace.domain.common.types.Location;
@@ -24,4 +25,7 @@ public interface LocationResource {
 
     @POST
     public Response createLocation(Location location);
+    
+    @GET
+    public Response getLocationsByPartialName(@QueryParam("q") String name);
 }
